@@ -77,6 +77,15 @@
             position: relative;
             display: inline-block;
         }
+        
+        .section-subtitle {
+            display: block;
+            margin-top: 10px;
+            font-size: 1.1em;
+            color: #aaa;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
 
         /* --- Navigation --- */
         nav {
@@ -165,13 +174,13 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1549490349-8643362a9b5b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* REPLACE with your soft light desk/editing setup image */
+            /* Placeholder background image - replace with your own */
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1549490349-8643362a9b5b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); 
             background-size: cover;
             background-position: center;
             position: relative;
         }
         
-        /* A subtle red shadow/glow for the cinematic feel */
         #hero::before {
             content: '';
             position: absolute;
@@ -215,7 +224,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- ABOUT SECTION (Split Layout) --- */
+        /* --- ABOUT SECTION --- */
         #about .about-flex {
             display: flex;
             align-items: center;
@@ -241,7 +250,46 @@
             transform: scale(1.02);
         }
 
-        /* --- SKILLS SECTION (Modern Cards) --- */
+        /* --- SHOWREEL SECTION (NEW) --- */
+        #showreel {
+            background-color: var(--color-black); /* Darker background to pop */
+        }
+
+        .showreel-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .showreel-wrapper:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 40px rgba(229, 9, 20, 0.3); /* Red cinematic glow on hover */
+            border-color: var(--color-red);
+        }
+
+        /* Responsive Iframe Container (16:9 Aspect Ratio) */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- SKILLS SECTION --- */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -287,7 +335,7 @@
             margin-bottom: 15px;
         }
 
-        /* --- TOOLS SECTION (Progress Bars) --- */
+        /* --- TOOLS SECTION --- */
         .tools-list {
             max-width: 800px;
             margin: 0 auto;
@@ -315,7 +363,7 @@
             transition: width 1s ease;
         }
 
-        /* --- EXPERIENCE & EDUCATION (Timeline) --- */
+        /* --- EXPERIENCE & EDUCATION --- */
         .timeline-container {
             max-width: 800px;
             margin: 0 auto;
@@ -368,17 +416,9 @@
             z-index: 1;
         }
 
-        .left {
-            left: 0;
-        }
-
-        .right {
-            left: 50%;
-        }
-
-        .right::after {
-            left: -8px;
-        }
+        .left { left: 0; }
+        .right { left: 50%; }
+        .right::after { left: -8px; }
         
         .left .timeline-item-content::before {
             content: " ";
@@ -411,7 +451,7 @@
             margin-bottom: 5px;
         }
 
-        /* --- PORTFOLIO SECTION (Grid) --- */
+        /* --- PORTFOLIO SECTION --- */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -434,7 +474,6 @@
             transition: transform 0.5s ease;
         }
         
-        /* Placeholder for cinematic tile look */
         .portfolio-item .placeholder {
             background-color: var(--color-black);
             display: flex;
@@ -463,16 +502,14 @@
             transition: opacity 0.3s ease;
         }
 
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
 
         .portfolio-overlay i {
             font-size: 3em;
             color: var(--color-white);
         }
 
-        /* Video Popup (Lightbox) */
+        /* Video Popup */
         .video-popup {
             position: fixed;
             top: 0;
@@ -480,7 +517,7 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.95);
-            display: none; /* Hidden by default */
+            display: none;
             align-items: center;
             justify-content: center;
             z-index: 9999;
@@ -488,10 +525,7 @@
             transition: opacity 0.3s ease;
         }
 
-        .video-popup.active {
-            display: flex;
-            opacity: 1;
-        }
+        .video-popup.active { display: flex; opacity: 1; }
 
         .video-popup-content {
             position: relative;
@@ -502,7 +536,7 @@
 
         .video-popup-content iframe {
             width: 100%;
-            height: 450px; /* Cinematic aspect ratio */
+            height: 450px;
             display: block;
             border: 3px solid var(--color-red);
         }
@@ -517,9 +551,7 @@
             transition: color 0.3s ease;
         }
         
-        .close-btn:hover {
-            color: var(--color-red);
-        }
+        .close-btn:hover { color: var(--color-red); }
         
         /* --- LANGUAGES SECTION --- */
         .language-list {
@@ -528,9 +560,7 @@
             gap: 40px;
         }
 
-        .language-item {
-            text-align: center;
-        }
+        .language-item { text-align: center; }
 
         .language-icon {
             font-size: 3em;
@@ -553,9 +583,7 @@
             margin-bottom: 10px;
         }
 
-        .contact-info p {
-            font-size: 1.1em;
-        }
+        .contact-info p { font-size: 1.1em; }
 
         /* --- FOOTER --- */
         footer {
@@ -565,9 +593,7 @@
             border-top: 1px solid rgba(229, 9, 20, 0.1);
         }
 
-        .social-links {
-            margin-bottom: 15px;
-        }
+        .social-links { margin-bottom: 15px; }
 
         .social-links a {
             font-size: 1.5em;
@@ -581,14 +607,11 @@
 
         /* --- Responsive Design (Mobile) --- */
         @media (max-width: 768px) {
-            /* Navigation */
-            .menu-toggle {
-                display: block;
-            }
+            .menu-toggle { display: block; }
 
             .nav-links {
                 position: absolute;
-                top: 60px; /* Below the nav bar */
+                top: 60px;
                 left: 0;
                 width: 100%;
                 background-color: var(--color-black);
@@ -598,9 +621,7 @@
                 box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
             }
             
-            .nav-links.active {
-                display: flex;
-            }
+            .nav-links.active { display: flex; }
 
             .nav-links a {
                 margin: 0;
@@ -608,24 +629,12 @@
                 border-bottom: 1px solid var(--color-dark-grey);
             }
             
-            /* Hero */
-            #hero h1 {
-                font-size: 3em;
-            }
-            
-            #hero h3 {
-                font-size: 1.5em;
-            }
+            #hero h1 { font-size: 3em; }
+            #hero h3 { font-size: 1.5em; }
 
-            /* About */
-            #about .about-flex {
-                flex-direction: column;
-            }
+            #about .about-flex { flex-direction: column; }
             
-            /* Timeline */
-            .timeline-container::after {
-                left: 31px; /* Move timeline to the left for better mobile view */
-            }
+            .timeline-container::after { left: 31px; }
 
             .timeline-item {
                 width: 100%;
@@ -633,13 +642,9 @@
                 padding-right: 25px;
             }
 
-            .timeline-item.right {
-                left: 0%;
-            }
+            .timeline-item.right { left: 0%; }
 
-            .timeline-item.left::after, .timeline-item.right::after {
-                left: 15px;
-            }
+            .timeline-item.left::after, .timeline-item.right::after { left: 15px; }
 
             .timeline-item.left .timeline-item-content::before {
                 left: 60px;
@@ -647,16 +652,12 @@
                 border-color: transparent var(--color-dark-grey) transparent transparent;
             }
             
-            /* Contact */
             .contact-grid {
                 flex-direction: column;
                 gap: 20px;
             }
             
-            /* Video Popup */
-            .video-popup-content iframe {
-                height: 300px;
-            }
+            .video-popup-content iframe { height: 300px; }
         }
     </style>
 </head>
@@ -668,7 +669,7 @@
             <div class="nav-links" id="navLinks">
                 <a href="#hero">Home</a>
                 <a href="#about">About</a>
-                <a href="#skills">Skills</a>
+                <a href="#showreel">Showreel</a> <a href="#skills">Skills</a>
                 <a href="#portfolio">Portfolio</a>
                 <a href="#contact">Contact</a>
             </div>
@@ -681,7 +682,7 @@
             <h1>SHUBH GAUSWAMI</h1>
             <h3>Creative Video Editor</h3>
             <p>Crafting engaging stories through clean edits and visual storytelling.</p>
-            <a href="#portfolio" class="btn primary">View Portfolio</a>
+            <a href="#showreel" class="btn primary">Watch Showreel</a>
             <a href="#contact" class="btn">Contact Me</a>
         </div>
     </section>
@@ -700,6 +701,26 @@
                 </div>
                 <div class="about-image">
                     <img src="shubh.png" alt="Shubh Gauswami Editing">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="showreel">
+        <div class="container">
+            <div class="section-header">
+                <h2>Showreel</h2>
+                <span class="section-subtitle">Highlight Reel 2025</span>
+            </div>
+            
+            <div class="showreel-wrapper">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/iOPHggu6hfY?si=PlW0Vkmx5m9-GMgl" 
+                            title="Showreel" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                    </iframe>
                 </div>
             </div>
         </div>
@@ -767,7 +788,7 @@
             </div>
             <div class="tools-list">
                 <div class="tool-item">
-                    <p>CapCut (Pc/Mobail)</p>
+                    <p>CapCut (Pc/Mobile)</p>
                     <div class="progress-bar"><div class="progress-fill" style="width: 95%;"></div></div>
                 </div>
                 <div class="tool-item">
@@ -775,7 +796,7 @@
                     <div class="progress-bar"><div class="progress-fill" style="width: 70%;"></div></div>
                 </div>
                 <div class="tool-item">
-                    <p>Adobe Premiare Pro (Learning)</p>
+                    <p>Adobe Premiere Pro (Learning)</p>
                     <div class="progress-bar"><div class="progress-fill" style="width: 40%;"></div></div>
                 </div>
             </div>
@@ -834,8 +855,8 @@
             </div>
             
             <div class="portfolio-grid">
-                <div class="portfolio-item" data-video-url="https://www.youtube.com/embed/iOPHggu6hfY?si=PlW0Vkmx5m9-GMgl">
-                    <div class="placeholder">Promo</div>
+                <div class="portfolio-item" data-video-url="https://www.youtube.com/embed/rwW1jH0zf6s?si=MyBZdCilqfSRCPqi">
+                    <div class="placeholder">promotional</div>
                     <div class="portfolio-overlay"><i class="fas fa-play"></i></div>
                 </div>
                 
@@ -940,7 +961,7 @@
                 navLinks.classList.toggle('active');
             });
 
-            // Close menu when a link is clicked (for smooth scroll and mobile)
+            // Close menu when a link is clicked
             document.querySelectorAll('.nav-links a').forEach(link => {
                 link.addEventListener('click', () => {
                     if (window.innerWidth <= 768) {
@@ -958,29 +979,27 @@
             portfolioItems.forEach(item => {
                 item.addEventListener('click', () => {
                     const videoUrl = item.getAttribute('data-video-url');
-                    videoFrame.src = videoUrl; // Load and autoplay the video
+                    videoFrame.src = videoUrl;
                     videoPopup.classList.add('active');
                 });
             });
 
-            // Close popup when 'X' is clicked
+            // Close popup logic
             closePopup.addEventListener('click', () => {
-                videoFrame.src = ""; // Stop the video
+                videoFrame.src = "";
                 videoPopup.classList.remove('active');
             });
 
-            // Close popup when clicking outside (on the dark overlay)
             videoPopup.addEventListener('click', (e) => {
                 if (e.target === videoPopup) {
-                    videoFrame.src = ""; // Stop the video
+                    videoFrame.src = "";
                     videoPopup.classList.remove('active');
                 }
             });
             
-            // Optional: Smooth scroll for all internal links (if not using native CSS smooth scroll)
+            // Smooth scroll for internal links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
-                    // Only prevent default if it's an anchor to a section
                     if (this.getAttribute('href').length > 1) {
                          e.preventDefault();
                         document.querySelector(this.getAttribute('href')).scrollIntoView({
